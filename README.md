@@ -20,6 +20,13 @@ everything up and running.
 
 I will update this section as soon as I have a bit more downtime :heart:
 
+To get started:
+
+    $ bundle install
+      [edit .env]
+    $ rake db:setup
+    $ rails c
+
 ## License
 
 The Cookbook is released under the [Affero GPL version 3][agpl].
