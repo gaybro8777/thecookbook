@@ -17,6 +17,8 @@
 *.swp
 *.swo
 
+### Vagrant ###
+.vagrant/
 
 .env
 public/uploads

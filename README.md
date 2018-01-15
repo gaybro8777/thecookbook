@@ -1,3 +1,12 @@
+For Vagrant & VirtualBox:
+$ vagrant up
+$ cd /vagrant
+$ tmux new
+$ rails s -b 0.0.0.0
+open browser to http://localhost:3000/users/sign_in
+enter dev credentials:
+ - email:    admin@endpoint.com
+ - password: pizza123
 # The Cookbook
 
 Free, open source recipe tracking app. See it in action at
