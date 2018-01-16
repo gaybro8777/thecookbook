@@ -4,6 +4,10 @@
     = f.text_field :name, class: 'form-control',
       placeholder: "Grandma's Apple Pie"
   .form-group
+    = f.label :intro_text
+    = f.text_field :intro_text, class: 'form-control',
+      placeholder: "Homemade soup makes a great vegetarian meal"
+  .form-group
     = f.label :ingredient_list, "Ingredients"
     = f.text_area :ingredient_list, class: 'form-control expanding',
       placeholder: "- 5 Granny Smith Apples", 'data-paste-format' => 'ul'

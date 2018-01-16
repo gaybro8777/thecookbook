@@ -12,6 +12,10 @@
       - else
         = @recipe.fork_link(current_user)
 .row
+  .col-md-12
+    %h3 Intro
+    = @recipe.intro_text
+.row
   .col-md-8
     %h3 Ingredients
 

@@ -6,7 +6,7 @@ class RecipePresenter < ApplicationPresenter
   attr_reader :recipe
 
   delegate :id, :name, :user, :source, :directions, :image,
-    :forked?, to: :recipe
+    :forked?, :intro_text, to: :recipe
 
   def tag_links
     return if recipe.tags.empty?
