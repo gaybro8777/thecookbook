@@ -8,7 +8,6 @@ describe 'Recipe' do
 
     it "creates a duplicate recipe" do
       forked_recipe.name.must_equal recipe.name
-      forked_recipe.ingredients.must_equal recipe.ingredients
       forked_recipe.directions.must_equal recipe.directions
       forked_recipe.tag_list.must_equal recipe.tag_list
     end

@@ -9,7 +9,6 @@ FactoryGirl.define do
 
   factory :recipe do
     name "My new recipe"
-    ingredients "- Salt\n-Pepper\n-Garlic"
     directions  "1. Mix together\n2. Enjoy!"
     tag_list    "gf, paleo, dinner"
     user
