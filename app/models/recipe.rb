@@ -1,12 +1,12 @@
 class Recipe < ActiveRecord::Base
-  acts_as_taggable
+  acts_as_taggable_on :tags, :ingredients
   mount_uploader :image, ImageUploader
 
   belongs_to :user
   belongs_to :fork_origin, class_name: "Recipe"
   has_many   :forks, class_name: "Recipe", foreign_key: 'fork_origin_id'
 
-  validates_presence_of :name, :ingredients, :directions, :user_id
+  validates_presence_of :name, :directions, :user_id
 
   def fork(new_user)
     dup.tap do |forked_recipe|

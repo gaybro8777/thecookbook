@@ -4,8 +4,8 @@
     = f.text_field :name, class: 'form-control',
       placeholder: "Grandma's Apple Pie"
   .form-group
-    = f.label :ingredients
-    = f.text_area :ingredients, class: 'form-control expanding',
+    = f.label :ingredient_list, "Ingredients"
+    = f.text_area :ingredient_list, class: 'form-control expanding',
       placeholder: "- 5 Granny Smith Apples", 'data-paste-format' => 'ul'
   .form-group
     = f.label :directions

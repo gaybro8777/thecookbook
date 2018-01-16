@@ -5,12 +5,19 @@ class RecipePresenter < ApplicationPresenter
 
   attr_reader :recipe
 
-  delegate :id, :name, :user, :source, :ingredients, :directions, :image,
+  delegate :id, :name, :user, :source, :directions, :image,
     :forked?, to: :recipe
 
   def tag_links
     return if recipe.tags.empty?
     recipe.tags.map do |tag|
+      h.link_to tag.name, "/tags/#{tag.name}"
+    end.join(", ").html_safe
+  end
+
+  def ingredient_links
+    return if recipe.ingredients.empty?
+    recipe.ingredients.map do |tag|
       h.link_to tag.name, "/tags/#{tag.name}"
     end.join(", ").html_safe
   end
