@@ -29,8 +29,19 @@ class RecipePresenter < ApplicationPresenter
   def fork_origin_link
     if origin = recipe.fork_origin
       text = "#{origin.user.name}'s #{origin.name}"
-      "Forked from ".html_safe + h.link_to(text, fork_origin_path)
+      h.link_to('Forked', fork_history_path) +  "".html_safe + " from " + h.link_to(text, fork_origin_path)
     end
+  end
+
+  def get_fork_history
+    links = []
+    recipe.fork_history.recipe_chain.each do |recipe|
+      if origin = recipe.fork_origin
+        text = "#{origin.user.name}'s #{origin.name}"
+        links << "".html_safe + "Forked from " + h.link_to(text, fork_origin_path)
+      end
+    end
+    links
   end
 
   def fork_origin_icon_link
@@ -74,6 +85,10 @@ class RecipePresenter < ApplicationPresenter
   end
 
   private
+
+  def fork_history_path
+    "/recipes/#{recipe.id}/fork_history"
+  end
 
   def fork_origin_path
     origin = recipe.fork_origin

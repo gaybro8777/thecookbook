@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :recipes do
     member do
       post :fork
+      get :fork_history, to: 'recipes#fork_history', as: :fork_history
     end
   end
   get '/recipes/:id/:slug' => 'recipes#show'

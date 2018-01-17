@@ -1,0 +1,32 @@
+- content_for(:title) { "Fork History for " + @recipe.name }
+
+.row
+  .col-md-10
+    %h1="".html_safe + "Fork History of " + link_to(@recipe.name, recipe_path(@recipe))
+    - @recipe.get_fork_history.each_with_index do |link, index|
+      .col-md-12
+        = "#{index + 1}."
+        = link
+  .col-md-2.text-right
+    #top-controls
+      - if current_user == @recipe.user
+        = link_to "Edit Recipe", edit_recipe_path(@recipe.id),
+          class: 'btn btn-primary'
+      - else
+        = @recipe.fork_link(current_user)
+.row
+  .col-md-8
+  .col-md-4
+    = image_tag @recipe.image.url,
+      class: 'img-rounded img-responsive recipe-image'
+.row
+  .col-md-12
+    %hr
+    - if @recipe.tag_links.present?
+      .pull-right
+        %strong Tags:
+        = @recipe.tag_links
+
+    - if @recipe.source.present?
+      %strong Source:
+      = @recipe.source

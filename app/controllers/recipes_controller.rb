@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
                                             :destroy, :fork]
 
   before_filter :find_recipe, only: [:show, :edit, :update, :destroy, :fork]
-  before_filter :creator_only, except: [:index, :new, :create, :fork, :show]
+  before_filter :creator_only, except: [:index, :new, :create, :fork, :show, :fork_history]
 
   def index
     @recipes = RecipePresenter.build(Recipe.order("name"))
@@ -38,6 +38,10 @@ class RecipesController < ApplicationController
       flash[:error] = 'Problem!'
       render :edit
     end
+  end
+
+  def fork_history
+    @recipe = RecipePresenter.new(Recipe.find params[:id])
   end
 
   def fork
