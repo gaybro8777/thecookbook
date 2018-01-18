@@ -2,7 +2,6 @@
   %thead
     %tr
       %th{colspan: 2} Name
-      %th Ingredients
       %th Tags
       %th Created by
   %tbody
@@ -14,6 +13,5 @@
         %td.name
           = link_to recipe.name, recipe_path(recipe), class: 'recipe-link'
           = recipe.fork_origin_icon_link
-        %td= recipe.ingredient_links
         %td= recipe.tag_links
         %td= recipe.created_by

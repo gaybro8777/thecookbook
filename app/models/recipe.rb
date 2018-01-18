@@ -22,4 +22,8 @@ class Recipe < ActiveRecord::Base
   def forked?
     !!fork_origin
   end
+
+  def ingredient_tag_options
+    ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'ingredients').uniq.pluck(:name)
+  end
 end

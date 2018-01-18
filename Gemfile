@@ -16,6 +16,7 @@ gem 'devise'
 gem 'omniauth-google-oauth2'
 
 gem 'acts-as-taggable-on'
+gem 'select2-rails'
 gem 'carrierwave'
 gem 'fog'
 

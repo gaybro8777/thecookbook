@@ -9,8 +9,8 @@
       placeholder: "Homemade soup makes a great vegetarian meal"
   .form-group
     = f.label :ingredient_list, "Ingredients"
-    = f.text_area :ingredient_list, class: 'form-control expanding',
-      placeholder: "- 5 Granny Smith Apples", 'data-paste-format' => 'ul'
+    = f.hidden_field :ingredient_list, value: @recipe.ingredient_list, class: "hidden_tags"
+    = f.select(:ingredient_list, @recipe.ingredient_tag_options, {}, { id: "ingredient_tags", :class => 'form-control', :multiple => true, name: "ingredient_list[]"})
   .form-group
     = f.label :directions
     = f.text_area :directions, class: 'form-control expanding',
