@@ -6,7 +6,7 @@ class RecipePresenter < ApplicationPresenter
   attr_reader :recipe
 
   delegate :id, :name, :user, :source, :directions, :image,
-    :forked?, :intro_text, to: :recipe
+    :forked?, :intro_text, :fork_origin, to: :recipe
 
   def tag_links
     return if recipe.tags.empty?
@@ -48,8 +48,8 @@ class RecipePresenter < ApplicationPresenter
     if origin = recipe.fork_origin
       text = "#{origin.user.name}'s #{origin.name}"
 
-      h.link_to h.content_tag(:i, nil, class: 'fa fa-cutlery'),
-                fork_origin_path, title: "Forked from #{text}"
+      h.link_to h.content_tag(:i, nil, class: 'fa fa-cutlery', id: "fork_origin#{recipe.fork_origin.id}"),
+                fork_origin_path
     end
   end
 
