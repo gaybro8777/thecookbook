@@ -6,7 +6,11 @@ class RecipesController < ApplicationController
   before_filter :creator_only, except: [:index, :new, :create, :fork, :show, :fork_history]
 
   def index
-    @recipes = RecipePresenter.build(Recipe.order("name"))
+    if params[:recent]
+      @recipes = RecipePresenter.build(Recipe.order("updated_at").limit(9))
+    else
+      @recipes = RecipePresenter.build(Recipe.order("name"))
+    end
   end
 
   def show
