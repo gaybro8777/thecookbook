@@ -1,0 +1,2 @@
+= link_to 'Grid', '/', class: current_page?(:controller => 'recipes', :action => 'home') ? 'selected' : 'shaded'
+= link_to 'List', recipes_path(), class: current_page?(:controller => 'recipes', :action => 'index') ? 'selected' : 'shaded'

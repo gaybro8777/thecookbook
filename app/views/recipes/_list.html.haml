@@ -7,8 +7,7 @@
       %th{ colspan: 2 }
         Creator
         %div.pull-right
-          %a.shaded Grid
-          %a.selected List
+          = render "layout_chooser"
   %tbody
     - @recipes.each do |recipe|
       %tr

@@ -1,5 +1,9 @@
 // app/assets/javascripts/modal.js.coffee
 .row.row-eq-height
+  .col-md-12
+    %div.pull-right
+      = render "layout_chooser"
+
   - @recipes.each do |recipe|
     .col-md-4.col-sm-4.center-align
       .col-md-12.image-red-mask
