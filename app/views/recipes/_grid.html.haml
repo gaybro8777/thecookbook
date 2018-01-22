@@ -12,8 +12,8 @@
       .col-md-12
         = link_to recipe.name, recipe_path(recipe), class: 'recipe-link'
         = recipe.fork_origin_icon_link
-      .col-md-12.tag-links
-        = recipe.tag_links
-      .col-md-12.ingredient-links
-        = recipe.ingredient_links
+      .col-md-12
+        = recipe.tag_links(',', 'shaded')
+      .col-md-12
+        = recipe.ingredient_links(',', 'shaded')
     = render "recipes/modal", recipe: recipe
