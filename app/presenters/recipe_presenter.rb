@@ -22,8 +22,8 @@ class RecipePresenter < ApplicationPresenter
     end.join(delimiter).html_safe
   end
 
-  def created_by
-    h.link_to user.name, "/users/#{user.id}/#{(user.name || "").parameterize}"
+  def created_by(classes = '')
+    h.link_to user.name, "/users/#{user.id}/#{(user.name || "").parameterize}", class: classes
   end
 
   def fork_origin_link

@@ -15,8 +15,9 @@ body.recipes-show
     margin-top: 20px
 
 table.recipes
+  thead th
+    padding: 10px 0
   tbody td
-    height: 81px
     vertical-align: top
     padding: 22px 0
     border-bottom: 2px solid #dddddd
@@ -26,6 +27,8 @@ table.recipes
       margin-left: 10px
       color: #333
   td.recipes-list-item-image
-    img
-      max-width: 70%
+    a
       max-height: 225px
+      max-width: 100%
+      img
+        max-height: 225px
