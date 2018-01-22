@@ -17,4 +17,4 @@
         %td.recipes-list-item-image
           = link_to recipe_path(recipe), class: 'recipe-link image-red-mask pull-right' do
             = image_tag recipe.image.url
-      = render "modal", recipe: recipe
+      = render "recipes/modal", recipe: recipe
