@@ -40,3 +40,13 @@
     - if @recipe.source.present?
       %strong Source:
       = @recipe.source
+
+.row
+  .col-md-12
+    %h4.center-align.recipe-link Related Tags
+    = render "recipes/grid", collection: @recipes =  RecipePresenter.build(@recipe.find_related_tags)
+
+.row
+  .col-md-12
+    %h4.center-align.recipe-link Related Ingredients
+    = render "recipes/grid", collection: @recipes =  RecipePresenter.build(@recipe.find_related_ingredients)
