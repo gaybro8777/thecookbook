@@ -8,18 +8,18 @@ class RecipePresenter < ApplicationPresenter
   delegate :id, :name, :user, :source, :directions, :image,
     :forked?, :intro_text, :fork_origin, to: :recipe
 
-  def tag_links
+  def tag_links(delimiter = ',', classes = '')
     return if recipe.tags.empty?
     recipe.tags.map do |tag|
-      h.link_to tag.name, "/tags/#{tag.name}"
-    end.join(", ").html_safe
+      h.link_to tag.name, "/tags/#{tag.name}", class: classes
+    end.join(delimiter).html_safe
   end
 
-  def ingredient_links
+  def ingredient_links(delimiter = ',', classes = '')
     return if recipe.ingredients.empty?
     recipe.ingredients.map do |tag|
-      h.link_to tag.name, "/tags/#{tag.name}"
-    end.join(", ").html_safe
+      h.link_to tag.name, "/tags/#{tag.name}", class: classes
+    end.join(delimiter).html_safe
   end
 
   def created_by
