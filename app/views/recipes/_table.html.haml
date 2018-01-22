@@ -2,21 +2,25 @@
   %thead
     %tr
       %th Title
-      %th Tags
-      %th Ingredients
-      %th{colspan: 2} Creator
+      %th  Tags
+      %th  Ingredients
+      %th{ colspan: 2 }
+        Creator
+        %div.pull-right
+          %a.shaded Grid
+          %a.selected List
   %tbody
     - @recipes.each do |recipe|
       %tr
-        %td.name
+        %td.name{ style: 'width: 20%;' }
           = link_to recipe.name, recipe_path(recipe), class: 'recipe-link'
           = recipe.fork_origin_icon_link
-        %td= recipe.tag_links('<br>', 'shaded')
-        %td= recipe.ingredient_links('<br>', 'shaded')
-        %td= recipe.created_by('shaded')
-        %td.recipes-list-item-image
-          = link_to recipe_path(recipe), class: 'recipe-link image-red-mask pull-right' do
-            = image_tag recipe.image.url
+        %td{ style: 'width: 20%;' }= recipe.tag_links('<br>', 'shaded')
+        %td{ style: 'width: 20%;' }= recipe.ingredient_links('<br>', 'shaded')
+        %td{ style: 'width: 10%;' }= recipe.created_by('shaded')
+        %td.recipes-list-item-image{ style: 'width: 30%;' }
+          = link_to recipe_path(recipe), class: 'recipe-link image-red-mask' do
+            %div{ style: 'background-image: url(' + recipe.image.url + ')' }
       -if recipe.fork_origin
         .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "parentRecipeLabel", :role => "dialog", :tabindex => "-1", :class => "fork_origin#{recipe.fork_origin.id}"}
           .modal-dialog{:role => "document"}
