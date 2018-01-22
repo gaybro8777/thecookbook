@@ -1,0 +1,9 @@
+-if recipe.fork_origin
+  .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "parentRecipeLabel", :role => "dialog", :tabindex => "-1", :class => "fork_origin#{recipe.fork_origin.id}"}
+    .modal-dialog{:role => "document"}
+      .modal-content
+        .modal-header
+          %h5#parentRecipeLabel.modal-title= recipe.fork_origin_link
+        .modal-body
+          = link_to recipe_path(recipe.fork_origin), class: 'recipe-link' do
+            = image_tag recipe.fork_origin.image.url, class: 'img-thumbnail img-xs'

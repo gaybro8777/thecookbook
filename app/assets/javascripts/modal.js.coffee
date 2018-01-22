@@ -1,6 +1,5 @@
 $(document).ready ->
-  $('.fa-cutlery').hover ->
-    console.log @id
+  $('.fa-arrow-right').hover ->
     $('.' + @id).modal show: true
     return
   return
