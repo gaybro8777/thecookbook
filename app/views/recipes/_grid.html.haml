@@ -2,7 +2,7 @@
 .row.row-eq-height
   - @recipes.each do |recipe|
     .col-md-4.col-sm-4.center-align
-      .col-md-12
+      .col-md-12.image-red-mask
         = link_to recipe_path(recipe) do
           = image_tag recipe.image.url, class: 'img-responsive image'
       .col-md-12
