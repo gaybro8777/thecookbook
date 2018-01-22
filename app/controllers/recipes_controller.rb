@@ -3,7 +3,12 @@ class RecipesController < ApplicationController
                                             :destroy, :fork]
 
   before_filter :find_recipe, only: [:show, :edit, :update, :destroy, :fork]
-  before_filter :creator_only, except: [:index, :new, :create, :fork, :show, :fork_history]
+  before_filter :creator_only, except: [:index, :home, :new, :create, :fork, :show, :fork_history]
+
+  def home
+    @recipes = RecipePresenter.build(Recipe.order("name"))
+    render :layout => 'home_layout'
+  end
 
   def index
     if params[:recent]

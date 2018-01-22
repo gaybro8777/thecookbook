@@ -1,0 +1,15 @@
+// app/assets/javascripts/modal.js.coffee
+.row.row-eq-height
+  - @recipes.each do |recipe|
+    .col-md-4.col-sm-4.center-align
+      .col-md-12.image-red-mask
+        = link_to recipe_path(recipe) do
+          = image_tag recipe.image.url, class: 'img-responsive image'
+      .col-md-12
+        = link_to recipe.name, recipe_path(recipe), class: 'recipe-link'
+        = recipe.fork_origin_icon_link
+      .col-md-12.tag-links
+        = recipe.tag_links
+      .col-md-12.ingredient-links
+        = recipe.ingredient_links
+    = render "recipes/modal", recipe: recipe
