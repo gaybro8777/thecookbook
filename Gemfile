@@ -33,6 +33,7 @@ group :development, :test do
   gem 'pry_debug'
   gem 'dotenv-rails'
   gem 'minitest-rails', '2.0.0.beta1'
+  gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 end
 
 group :test do
