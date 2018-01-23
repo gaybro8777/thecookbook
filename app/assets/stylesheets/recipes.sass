@@ -29,8 +29,11 @@ table.recipes
   tr
     &:hover
       .image-red-mask
-        &::after
-          opacity: 0
+        -moz-filter: none
+        -ms-filter: none
+        -o-filter: none
+        -webkit-filter: none
+        filter:  none
   td.recipes-list-item-image
     a
       width: 100%
