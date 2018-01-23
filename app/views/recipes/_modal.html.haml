@@ -1,9 +1,15 @@
--if recipe.fork_origin
-  .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "parentRecipeLabel", :role => "dialog", :tabindex => "-1", :class => "fork_origin#{recipe.fork_origin.id}"}
-    .modal-dialog{:role => "document"}
-      .modal-content
-        .modal-header
-          %h5#parentRecipeLabel.modal-title= recipe.fork_origin_link
-        .modal-body
-          = link_to recipe_path(recipe.fork_origin), class: 'recipe-link' do
-            = image_tag recipe.fork_origin.image.url, class: 'img-thumbnail img-xs'
+// JS listener app/assets/javascripts/modal.js.coffee on class
+.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "parentRecipeLabel", :role => "dialog", :tabindex => "-1", :class => "fork_origin#{recipe.id}"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-body.row
+        - recipe.parent_recipes.each_with_index do |forked_recipe, index|
+          .col-md-2.col-sm-2.image-red-mask
+            = link_to recipe_path(forked_recipe), class: 'recipe-link' do
+              = image_tag forked_recipe.image.url, class: 'img-responsive image modal-img'
+          .col-md-2.col-sm-2
+            = link_to forked_recipe.name, recipe_path(forked_recipe), class: 'recipe-link'
+            - unless index == recipe.parent_recipes.size - 1
+              .glyphicon.glyphicon-arrow-right
+            %br
+            = link_to forked_recipe.user.name, user_path(forked_recipe.user), class: 'shaded'

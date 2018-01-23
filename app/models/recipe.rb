@@ -23,6 +23,10 @@ class Recipe < ActiveRecord::Base
     !!fork_origin
   end
 
+  def parent_recipes
+    fork_history.recipe_chain
+  end
+
   def ingredient_tag_options
     ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'ingredients').uniq.pluck(:name)
   end

@@ -3,20 +3,20 @@
   .col-md-12
     %div.pull-right
       = render "recipes/layout_chooser"
-
-  - @recipes.each do |recipe|
-    .col-md-4.col-sm-4.center-align
-      .col-md-12.image-red-mask
-        = link_to recipe_path(recipe) do
-          = image_tag recipe.image.url, class: 'img-responsive image'
-      .col-md-12
-        = link_to recipe.name, recipe_path(recipe), class: 'recipe-link'
-        = recipe.fork_origin_icon_link
-      .col-md-12
-        = recipe.tag_links(',', 'shaded')
-      .col-md-12
-        = recipe.ingredient_links(',', 'shaded')
-    = render "recipes/modal", recipe: recipe
+  .row
+    - @recipes.each do |recipe|
+      .col-md-4.col-sm-4.center-align
+        .col-md-12.image-red-mask
+          = link_to recipe_path(recipe) do
+            = image_tag recipe.image.url, class: 'img-responsive image'
+        .col-md-12
+          = link_to recipe.name, recipe_path(recipe), class: 'recipe-link'
+          = recipe.fork_origin_icon_link
+        .col-md-12
+          = recipe.tag_links(',', 'shaded')
+        .col-md-12
+          = recipe.ingredient_links(',', 'shaded')
+      = render "recipes/modal", recipe: recipe
 
 - if !@recipes_raw.nil? && @recipes_raw.next_page
   .row

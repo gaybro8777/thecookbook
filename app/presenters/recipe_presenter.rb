@@ -7,7 +7,7 @@ class RecipePresenter < ApplicationPresenter
 
   delegate :id, :name, :user, :source, :directions, :image,
     :forked?, :intro_text, :fork_origin, :find_related_tags,
-    :find_related_ingredients, to: :recipe
+    :find_related_ingredients, :parent_recipes, to: :recipe
 
   def tag_links(delimiter = ',', classes = '')
     return if recipe.tags.empty?
