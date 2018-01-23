@@ -1,5 +1,5 @@
 // app/assets/javascripts/modal.js.coffee
-.row.row-eq-height
+.row.row-eq-height#recipes-grid
   .col-md-12
     %div.pull-right
       = render "recipes/layout_chooser"
@@ -17,3 +17,10 @@
       .col-md-12
         = recipe.ingredient_links(',', 'shaded')
     = render "recipes/modal", recipe: recipe
+
+- if !@recipes_raw.nil? && @recipes_raw.next_page
+  .row
+    .col-xs-12.text-center#recipes-load-more-activator
+      = link_to '', id: 'load-more-items', data: { nextpage: @recipes_raw.next_page, baseurl: request.base_url } do
+        = image_tag image_url('more.svg')
+      = image_tag image_url('loader.gif'), id: 'load-more-loader'

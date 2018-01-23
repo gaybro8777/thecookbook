@@ -12,6 +12,8 @@ gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'redcarpet'
 gem 'inline_svg', '~> 1.3.1'
+gem 'will_paginate', '~> 3.1.6'
+gem 'active_model_serializers', '~> 0.10.7'
 
 gem 'devise'
 gem 'omniauth-google-oauth2'

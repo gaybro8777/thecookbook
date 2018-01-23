@@ -6,8 +6,14 @@ class RecipesController < ApplicationController
   before_filter :creator_only, except: [:index, :home, :new, :create, :fork, :show, :fork_history]
 
   def home
-    @recipes = RecipePresenter.build(Recipe.order("name"))
-    render :layout => 'home_layout'
+    @recipes_raw = Recipe.paginate(page: params[:page])
+                         .order('updated_at DESC')
+    @recipes = RecipePresenter.build(@recipes_raw)
+
+    respond_to do |format|
+      format.html { render layout: 'home_layout' }
+      format.json { render json: { items: ActiveModel::SerializableResource.new(@recipes_raw), nextpage: @recipes_raw.next_page } }
+    end
   end
 
   def index
