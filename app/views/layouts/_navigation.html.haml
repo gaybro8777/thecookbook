@@ -10,7 +10,9 @@
         %li.navbar-brand.glyphicon.glyphicon-search
       %li= link_to "Add Recipe", new_recipe_path, class: 'navbar-brand'
     %ul.nav.navbar-nav.navbar-center
-      %li= link_to "LIBRARY TEST KITCHEN", root_path, class: 'navbar-brand'
+      %li
+        = link_to root_path, class: 'navbar-brand-logo' do
+          = image_tag 'logo.svg'
     %ul.nav.navbar-nav.navbar-right
       %li= link_to current_user.name, user_path(current_user) if current_user
       // JS click event tied to .scrollToBottom, scroll.js.coffee
