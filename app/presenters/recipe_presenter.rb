@@ -54,6 +54,10 @@ class RecipePresenter < ApplicationPresenter
     end
   end
 
+  def summary_modal
+    h.link_to h.content_tag(:i, nil, class: 'fa fa-chevron-down', id: "recipe_summary_#{recipe.id}"), "#"
+  end
+
   def source
     h.link_to(recipe.source, recipe.source) if recipe.source.present?
   end

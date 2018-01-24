@@ -1,0 +1,13 @@
+// JS listener app/assets/javascripts/_recipe_modal.js.coffee on class
+.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "parentRecipeLabel", :role => "dialog", :tabindex => "-1", :class => "recipe_summary_#{recipe.id}"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5#parentRecipeLabel.modal-title= recipe.name
+      .modal-body
+        = link_to recipe_path(recipe), class: 'recipe-link' do
+          = image_tag recipe.image.url, class: 'img-thumbnail img-xs'
+        %h5 Tags
+        = recipe.tag_links(',', 'shaded')
+        %h5 Ingredients
+        = recipe.ingredient_links(',', 'shaded')

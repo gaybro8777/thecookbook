@@ -1,11 +1,10 @@
-// app/assets/javascripts/modal.js.coffee
 .row.row-eq-height#recipes-grid
   .col-md-12
     %div.pull-right
       = render "recipes/layout_chooser"
   .row
     - @recipes.each do |recipe|
-      .col-md-4.col-sm-4.center-align
+      .col-md-4.col-sm-4.center-align.recipe-card
         .col-md-12.image-red-mask
           = link_to recipe_path(recipe) do
             = image_tag recipe.image.url, class: 'img-responsive image'
@@ -16,7 +15,10 @@
           = recipe.tag_links(',', 'shaded')
         .col-md-12
           = recipe.ingredient_links(',', 'shaded')
-      = render "recipes/modal", recipe: recipe
+        .col-md-12
+          = recipe.summary_modal
+        = render "recipes/recipe_modal", recipe: recipe
+        = render "recipes/history_modal", recipe: recipe
 
 - if !@recipes_raw.nil? && @recipes_raw.next_page
   .row

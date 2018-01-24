@@ -1,0 +1,33 @@
+img.img-responsive.history-modal-img
+  @extend .modal-img
+  height: 125px
+
+.history-modal
+  display: none
+  overflow: auto
+  position: fixed
+  top: -31px
+  z-index: 1050
+  -webkit-overflow-scrolling: touch
+  outline: 0
+  right: 0
+  bottom: 0
+  left: 0
+
+.history-modal-body
+  @extend .modal-body
+  position: relative
+  padding: 20px
+
+.history-modal-dialog
+  @extend .modal-dialog
+  width: 100%
+  display: inline-block
+  height: 25px
+  right: 0
+  bottom: 0
+  left: 0
+
+.history-modal-content
+  @extend .modal-content
+  box-shadow: 0 0 29px #f80014

@@ -1,12 +1,12 @@
-// JS listener app/assets/javascripts/modal.js.coffee on class
-.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "parentRecipeLabel", :role => "dialog", :tabindex => "-1", :class => "recipe_#{recipe.id}"}
-  .modal-dialog{:role => "document"}
-    .modal-content
-      .modal-body.row
+// JS listener app/assets/javascripts/_history_modal.js.coffee on class
+.history-modal.fade{"aria-hidden" => "true", "aria-labelledby" => "parentRecipeLabel", :role => "dialog", :tabindex => "-1", :class => "recipe_#{recipe.id}"}
+  .history-modal-dialog{:role => "document"}
+    .history-modal-content
+      .history-modal-body.row
         - recipe.parent_recipes.each_with_index do |forked_recipe, index|
           .col-md-2.col-sm-2.image-red-mask
             = link_to recipe_path(forked_recipe), class: 'recipe-link' do
-              = image_tag forked_recipe.image.url, class: 'img-responsive image modal-img'
+              = image_tag forked_recipe.image.url, class: 'img-responsive image history-modal-img'
           .col-md-2.col-sm-2
             = link_to forked_recipe.name, recipe_path(forked_recipe), class: 'recipe-link'
             - unless index == recipe.parent_recipes.size - 1
