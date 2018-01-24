@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
-    @user    = User.find(params[:id])
-    @recipes = @user.recipes.order("name")
-    @recipes = RecipePresenter.build(@recipes)
+    @user = User.find(params[:id])
+    @recipes_raw = @user.recipes.paginate(page: params[:page]).order('updated_at DESC')
+    @recipes = RecipePresenter.build(@recipes_raw)
   end
 end
