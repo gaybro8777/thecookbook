@@ -20,7 +20,8 @@ class RecipesController < ApplicationController
     if params[:recent]
       @recipes = RecipePresenter.build(Recipe.order("updated_at").limit(9))
     else
-      @recipes = RecipePresenter.build(Recipe.order("name"))
+      @recipes_raw = Recipe.paginate(page: params[:page]).order('updated_at DESC')
+      @recipes = RecipePresenter.build(@recipes_raw)
     end
   end
 

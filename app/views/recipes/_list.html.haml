@@ -1,23 +1,27 @@
-%table.table.recipes
-  %thead
-    %tr
-      %th Title
-      %th  Tags
-      %th  Ingredients
-      %th{ colspan: 2 }
-        Creator
-        %div.pull-right
-          = render "recipes/layout_chooser"
-  %tbody
-    - @recipes.each do |recipe|
-      %tr
-        %td.name{ style: 'width: 20%;' }
-          = link_to recipe.name, recipe_path(recipe), class: 'recipe-link'
-          = recipe.fork_origin_icon_link
-        %td{ style: 'width: 20%;' }= recipe.tag_links('<br>', 'shaded')
-        %td{ style: 'width: 20%;' }= recipe.ingredient_links('<br>', 'shaded')
-        %td{ style: 'width: 10%;' }= recipe.created_by('shaded')
-        %td.recipes-list-item-image{ style: 'width: 30%;' }
-          = link_to recipe_path(recipe), class: 'recipe-link' do
-            %div{ style: 'background-image: url(' + recipe.image.url + ')', class: 'image-red-mask' }
-      = render "recipes/modal", recipe: recipe
+.row
+  .col-xs-12
+    %table.table.recipes
+      %thead
+        %tr
+          %th Title
+          %th  Tags
+          %th  Ingredients
+          %th{ colspan: 2 }
+            Creator
+            %div.pull-right
+              = render "recipes/layout_chooser"
+      %tbody
+        - @recipes.each do |recipe|
+          %tr
+            %td.name{ style: 'width: 20%;' }
+              = link_to recipe.name, recipe_path(recipe), class: 'recipe-link'
+              = recipe.fork_origin_icon_link
+            %td{ style: 'width: 20%;' }= recipe.tag_links('<br>', 'shaded')
+            %td{ style: 'width: 20%;' }= recipe.ingredient_links('<br>', 'shaded')
+            %td{ style: 'width: 10%;' }= recipe.created_by('shaded')
+            %td.recipes-list-item-image{ style: 'width: 30%;' }
+              = link_to recipe_path(recipe), class: 'recipe-link' do
+                %div{ style: 'background-image: url(' + recipe.image.url + ')', class: 'image-red-mask' }
+          = render "recipes/modal", recipe: recipe
+
+= will_paginate @recipes_raw
