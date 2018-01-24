@@ -49,7 +49,7 @@ class RecipePresenter < ApplicationPresenter
     if origin = recipe.fork_origin
       text = "#{origin.user.name}'s #{origin.name}"
 
-      h.link_to h.content_tag(:i, nil, class: 'fa fa-arrow-right', id: "fork_origin#{recipe.fork_origin.id}"),
+      h.link_to h.content_tag(:i, nil, class: 'fa fa-arrow-right', id: "recipe_#{recipe.id}"),
                 fork_origin_path
     end
   end
