@@ -12,7 +12,7 @@
     = csrf_meta_tags
   %body{class: "#{controller.controller_name}-#{controller.action_name}"}
     = render "layouts/navigation"
-    .container
+    %div{ class: yield(:layout_fluid).present? ? 'container-fluid' : 'container' }
       = render "layouts/flash", flash: flash
       = yield
     = render "layouts/footer"

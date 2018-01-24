@@ -11,7 +11,7 @@ class RecipesController < ApplicationController
     @recipes = RecipePresenter.build(@recipes_raw)
 
     respond_to do |format|
-      format.html { render layout: 'home_layout' }
+      format.html { render }
       format.json { render json: { items: ActiveModel::SerializableResource.new(@recipes_raw), nextpage: @recipes_raw.next_page } }
     end
   end
