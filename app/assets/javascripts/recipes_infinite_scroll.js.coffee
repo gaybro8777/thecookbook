@@ -30,8 +30,13 @@ recipes_load_more_process = (items) ->
   
   $.each(items, (index, item) ->
     container = $('<div/>', {
-      class: 'col-md-4 col-sm-4 center-align'
+      class: 'col-md-4 col-sm-4 center-align recipe-dynamically-loaded'
     })
+
+    container.css('opacity', 0)
+    setTimeout(() ->
+      container.css('opacity', 1)
+    , index * 100)
 
     image_inner = $('<div/>', {
       class: 'col-md-12 image-red-mask'
