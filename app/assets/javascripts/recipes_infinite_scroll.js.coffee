@@ -26,11 +26,11 @@ jQuery ->
   )
 
 recipes_load_more_process = (items) ->
-  grid = $('#recipes-grid')
+  grid = $('.recipes-grid-masonry').first()
   
   $.each(items, (index, item) ->
     container = $('<div/>', {
-      class: 'col-md-4 col-sm-4 center-align recipe-dynamically-loaded'
+      class: 'center-align recipes-grid-card recipe-dynamically-loaded'
     })
 
     container.css('opacity', 0)

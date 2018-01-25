@@ -67,11 +67,6 @@ table.recipes
   img
     height: 50px
 
-.recipe-card
-  height: 300px
-  overflow: hidden
-  position: relative
-
 .fork-this-recipe-svg
   width: 200px
   left: -2px
@@ -99,3 +94,13 @@ body.recipes-new,
 body.recipes-create
   > .container
     padding-top: 140px
+
+.recipes-grid
+  .recipes-grid-masonry
+    display: grid
+    grid-gap: 40px
+    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr))
+
+.recipes-home
+  .recipes-layout-chooser
+    margin-bottom: 30px
