@@ -8,8 +8,9 @@
           %th  Ingredients
           %th{ colspan: 2 }
             Creator
-            %div.pull-right
-              = render "recipes/layout_chooser"
+            - if params[:controller] == 'recipes' && (params[:action] == 'home' || params[:action] == 'index')
+              %div.pull-right
+                = render "recipes/layout_chooser"
       %tbody
         - @recipes.each do |recipe|
           %tr
