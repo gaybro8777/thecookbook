@@ -79,3 +79,23 @@ table.recipes
 
 .forked-svg
   width: 100px
+
+form.new_recipe
+  input[type=submit]
+    width: 300px
+    background: url('create_recipe.svg') no-repeat -6px 0
+    background-size: cover
+    border: 0
+    font-size: 0
+    height: 30px
+    padding: 0
+    margin-bottom: 20px
+    
+    &:focus
+      outline: none
+      box-shadow: none
+
+body.recipes-new,
+body.recipes-create
+  > .container
+    padding-top: 140px
