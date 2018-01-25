@@ -7,12 +7,17 @@ class RecipePresenter < ApplicationPresenter
 
   delegate :id, :name, :user, :source, :directions, :image,
     :forked?, :intro_text, :fork_origin, :find_related_tags,
-    :find_related_ingredients, :parent_recipes, to: :recipe
+    :find_related_ingredients, :parent_recipes, :tags, :ingredients,
+    to: :recipe
 
-  def tag_links(delimiter = ',', classes = '')
+  def tag_links(delimiter = ',', classes = '', show_page = false)
     return if recipe.tags.empty?
     recipe.tags.map do |tag|
-      h.link_to tag.name, "/tags/#{tag.name}", class: classes
+      if show_page
+        h.link_to "#{tag.name} (#{tag.taggings_count})", "/tags/#{tag.name}", class: classes
+      else
+        h.link_to tag.name, "/tags/#{tag.name}", class: classes
+      end
     end.join(delimiter).html_safe
   end
 

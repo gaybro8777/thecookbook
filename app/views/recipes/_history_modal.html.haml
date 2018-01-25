@@ -4,12 +4,13 @@
     .history-modal-content
       .history-modal-body.row
         - recipe.parent_recipes.each_with_index do |forked_recipe, index|
-          .col-md-2.col-sm-2.image-red-mask
-            = link_to recipe_path(forked_recipe), class: 'recipe-link' do
-              = image_tag forked_recipe.image.url, class: 'img-responsive image history-modal-img'
-          .col-md-2.col-sm-2
-            = link_to forked_recipe.name, recipe_path(forked_recipe), class: 'recipe-link'
-            - unless index == recipe.parent_recipes.size - 1
-              .glyphicon.glyphicon-arrow-right
-            %br
-            = link_to forked_recipe.user.name, user_path(forked_recipe.user), class: 'shaded'
+          .col-md-4.history-modal-card
+            .col-md-8.col-sm-10.image-red-mask
+              = link_to recipe_path(forked_recipe), class: 'recipe-link' do
+                = image_tag forked_recipe.image.url, class: 'img-responsive image history-modal-img'
+            .col-md-4.col-sm-2
+              = link_to forked_recipe.name, recipe_path(forked_recipe), class: 'recipe-link'
+              - unless index == recipe.parent_recipes.size - 1
+                .glyphicon.glyphicon-arrow-right
+              %br
+              = link_to forked_recipe.user.name, user_path(forked_recipe.user), class: 'shaded'

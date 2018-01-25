@@ -1,52 +1,63 @@
 - content_for(:title) { @recipe.name }
 
 .row
-  .col-md-10
-    %h1= @recipe.name
-    = @recipe.fork_origin_link
-  .col-md-2.text-right
-    #top-controls
-      - if current_user == @recipe.user
-        = link_to "Edit Recipe", edit_recipe_path(@recipe.id),
-          class: 'btn btn-primary'
-      - else
-        = @recipe.fork_link(current_user)
+  .col-md-12
+    %h1.center-align= @recipe.name
+  .center-align
+    - if current_user == @recipe.user
+      = link_to "Edit Your Recipe", edit_recipe_path(@recipe.id),
+        class: 'shaded'
+.row
+  .col-md-12.center-align
+    = image_tag @recipe.image.url,
+      class: 'img-rounded recipe-image'
+
 .row
   .col-md-12
-    %h3 Intro
-    = @recipe.intro_text
+    %h2
+      = @recipe.intro_text
 .row
+  .col-md-4
+    %h5
+      %strong Creator
+    = link_to @recipe.user.name, user_path(@recipe.user), class: 'shaded'
+
+    - if @recipe.tags.any?
+      %h5
+        %strong Tags
+      = @recipe.tag_links('<br>', 'shaded', true)
+
+    - if @recipe.ingredients.any?
+      %h5
+        %strong Ingredients
+      = @recipe.ingredient_links('<br>', 'shaded')
+
+    - if @recipe.source.present?
+      %h5
+        %strong Source
+      = link_to @recipe.source, class: 'shaded'
+
+    = render "recipes/history_modal", recipe: @recipe
+    - if current_user != @recipe.user
+      = link_to "/recipes/#{@recipe.id}/fork", method: :post do
+        = image_tag 'fork_this_recipe.svg', class: 'fork-this-recipe-svg'
+    %br
+    = image_tag 'forked.svg', class: 'forked-svg fa fa-arrow-right', id: "recipe_#{@recipe.id}"
+
   .col-md-8
-    %h3 Ingredients
-
-    = @recipe.ingredient_links
-
     %h3 Directions
 
     :markdown
       #{@recipe.directions}
 
-  .col-md-4
-    = image_tag @recipe.image.url,
-      class: 'img-rounded img-responsive recipe-image'
-.row
-  .col-md-12
-    %hr
-    - if @recipe.tag_links.present?
-      .pull-right
-        %strong Tags:
-        = @recipe.tag_links
+- if @recipe.tags.any?
+  .row
+    .col-md-12
+      %h4.center-align.recipe-link Related Tags
+      = render "recipes/grid", collection: @recipes =  RecipePresenter.build(@recipe.find_related_tags)
 
-    - if @recipe.source.present?
-      %strong Source:
-      = @recipe.source
-
-.row
-  .col-md-12
-    %h4.center-align.recipe-link Related Tags
-    = render "recipes/grid", collection: @recipes =  RecipePresenter.build(@recipe.find_related_tags)
-
-.row
-  .col-md-12
-    %h4.center-align.recipe-link Related Ingredients
-    = render "recipes/grid", collection: @recipes =  RecipePresenter.build(@recipe.find_related_ingredients)
+- if @recipe.ingredients.any?
+  .row
+    .col-md-12
+      %h4.center-align.recipe-link Related Ingredients
+      = render "recipes/grid", collection: @recipes =  RecipePresenter.build(@recipe.find_related_ingredients)
