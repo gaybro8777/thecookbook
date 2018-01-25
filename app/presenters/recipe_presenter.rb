@@ -21,10 +21,14 @@ class RecipePresenter < ApplicationPresenter
     end.join(delimiter).html_safe
   end
 
-  def ingredient_links(delimiter = ',', classes = '')
+  def ingredient_links(delimiter = ',', classes = '', show_page = false)
     return if recipe.ingredients.empty?
     recipe.ingredients.map do |tag|
-      h.link_to tag.name, "/tags/#{tag.name}", class: classes
+      if show_page
+        h.link_to "#{tag.name} (#{tag.taggings_count})", "/tags/#{tag.name}", class: classes
+      else
+        h.link_to tag.name, "/tags/#{tag.name}", class: classes
+      end
     end.join(delimiter).html_safe
   end
 

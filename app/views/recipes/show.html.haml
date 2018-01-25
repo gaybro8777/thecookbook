@@ -30,7 +30,7 @@
     - if @recipe.ingredients.any?
       %h5
         %strong Ingredients
-      = @recipe.ingredient_links('<br>', 'shaded')
+      = @recipe.ingredient_links('<br>', 'shaded', true)
 
     - if @recipe.source.present?
       %h5
