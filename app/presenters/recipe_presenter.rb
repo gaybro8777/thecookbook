@@ -72,7 +72,7 @@ class RecipePresenter < ApplicationPresenter
   end
 
   def to_param
-    "#{recipe.id}/#{recipe.name.parameterize}"
+    "#{recipe.id}"
   end
 
   def fork_link(current_user)
