@@ -2,13 +2,13 @@
 .history-modal.fade{"aria-hidden" => "true", "aria-labelledby" => "parentRecipeLabel", :role => "dialog", :tabindex => "-1", :class => "recipe_#{recipe.id}"}
   .history-modal-dialog{:role => "document"}
     .history-modal-content
-      .history-modal-body.row
+      .history-modal-body
         - recipe.parent_recipes.each_with_index do |forked_recipe, index|
-          .col-md-4.history-modal-card
-            .col-md-8.col-sm-10.image-red-mask
+          .history-modal-card
+            .col-md-7
               = link_to recipe_path(forked_recipe), class: 'recipe-link' do
-                = image_tag forked_recipe.image.url, class: 'img-responsive image history-modal-img'
-            .col-md-4.col-sm-2
+                = image_tag forked_recipe.image.url, class: 'img-responsive image history-modal-img image-red-mask'
+            .col-md-5.history-modal-links
               = link_to forked_recipe.name, recipe_path(forked_recipe), class: 'recipe-link'
               - unless index == recipe.parent_recipes.size - 1
                 .glyphicon.glyphicon-arrow-right
