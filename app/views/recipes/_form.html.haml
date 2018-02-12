@@ -2,11 +2,11 @@
   .form-group
     = f.label :name
     = f.text_field :name, class: 'form-control',
-      placeholder: "Grandma's Apple Pie"
+      placeholder: t( '.name_ph' ) 
   .form-group
     = f.label :intro_text
     = f.text_field :intro_text, class: 'form-control',
-      placeholder: "Homemade soup makes a great vegetarian meal"
+      placeholder: t( '.intro_ph' )
   .form-group
     = f.label :ingredient_list, "Ingredients"
     = f.hidden_field :ingredient_list, value: @recipe.ingredient_list, class: "hidden_tags"
@@ -14,7 +14,7 @@
   .form-group
     = f.label :directions
     = f.text_area :directions, class: 'form-control expanding', rows: 1,
-      placeholder: "1. Mix all ingredients", 'data-paste-format' => 'ol'
+      placeholder: t( '.directions_ph' ), 'data-paste-format' => 'ol'
   .form-group
     .row
       - if @recipe.image.present?
@@ -30,16 +30,15 @@
           = f.file_field :image, class: 'form-control'
           .form-file-faker Choose file
         %p.help-block
-          Take a picture of the finished product so you remember how good it
-          looks!
+          = t( '.image_ph' )
   .form-group
     = f.label :tag_list, "Tags"
     = f.text_field :tag_list, class: 'form-control',
-      placeholder: 'Paleo, Gluten Free, Dinner'
+      placeholder: t( '.tags_ph' )
   .form-group
     = f.label :source
     = f.text_field :source, class: 'form-control',
-      placeholder: "http://recipe-source.com"
+      placeholder: t( '.source_ph' )
   = f.submit "#{@recipe.persisted? ? 'Save' : 'Create'} Recipe",
     class: 'btn btn-primary'
   - if @recipe.persisted?

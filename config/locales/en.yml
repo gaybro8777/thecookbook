@@ -24,3 +24,12 @@ en:
   layouts:
     footer:
       text: 'Starting at Harvard in 2011, the Library Test Kitchen is a seminar and community bringing together librarians, students, and designers to discover innovative new programs, services, and spatial strategies for libraries. Participants created wifi-proof booths, study carrels for napping, and digital campfires for charging devices convivially. Over its life, the seminar created a pop-up library lab in a retail storefront space in Harvard Square, visited SXSW, and moved from Harvard to the Graduate School of Library and Information Science at Simmons College. Now, it''s forking again, into a cookbook in parts: first, this platform for sharing "recipes" for playful, participatory innovation in libraries; and second, a book, to be published by MIT Press. And you can contribute! Feel free to browse the recipes collected here—and to use them, share them, adapt them, and share back, by contributing recipes of your own!'
+  recipes:
+    form:
+      name_ph: 'Give your recipe a short, punchy title.'
+      intro_ph: 'Here''s where you can describe your project in a few sentences.'
+      directions_ph: 'Tell us how you did it. Break it down into steps. Tell us how we know when it''s done.'
+      tags_ph: 'Reference? Media? Participation? What are your keywords?' 
+      image_ph: 'Take a picture of the finished project so you remember how good it looks!'
+      source_ph: 'If your project has a home on the web, or there''s a good online reference for your recipe, share the address here.'
+
