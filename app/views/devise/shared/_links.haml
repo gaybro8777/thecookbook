@@ -2,7 +2,7 @@
   = yield(:devise_shared)
   - if controller_name != 'sessions'
     %li= link_to "Sign in", new_session_path(resource_name)
-  - if controller_name == 'sessions'
+  - if controller_name == 'sessions_disabled'
     %li= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2)
   - if devise_mapping.registerable? && controller_name != 'registrations'
     %li= link_to "Sign up", new_registration_path(resource_name)
